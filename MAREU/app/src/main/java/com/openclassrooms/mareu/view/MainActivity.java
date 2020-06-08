@@ -47,24 +47,24 @@ public class MainActivity
 // CLEAR IF ORIENTATION CHANGES ____________________________________________________________________
     private int orientation=0;
     private ApiService beforeApiService =apiService;
-    private static final int ADD_MEETING_REQUEST_CODE =567;
 
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if (orientation != newConfig.orientation) {
-//IF THE API CHANGES, THERE IS A ROTATION IN ADD MEETING, SO A NEW INSTANCE THE API HAS BEEN CREATED
-// RESET THE RECYCLER.
-// ELSE DELETE THE API LIST
-            if(beforeApiService != apiService){
-                beforeApiService =apiService;
-                reset_RecyclerView_And_Adapter();
-            }else {
-                clear_Meeting_List();
-            }
-            orientation = newConfig.orientation;
-        }
-    }
+//    @Override
+//    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//        if (orientation != newConfig.orientation) {
+////IF THE API CHANGES, THERE IS A ROTATION IN ADD MEETING, SO A NEW INSTANCE THE API HAS BEEN CREATED
+//// RESET THE RECYCLER.
+//// ELSE DELETE THE API LIST
+//            if(beforeApiService != apiService){
+//                beforeApiService =apiService;
+//                reset_RecyclerView_And_Adapter();
+//            }else {
+//                clear_Meeting_List();
+//                reset_RecyclerView_And_Adapter();
+//            }
+//            orientation = newConfig.orientation;
+//        }
+//    }
 
 // RESET RECYCLERVIEW ______________________________________________________________________________
     private void reset_RecyclerView_And_Adapter(){
@@ -82,6 +82,9 @@ public class MainActivity
 
         start_Add_Meeting_Activity();
         recyclerView_Configuration();
+
+        clear_Meeting_List();
+        reset_RecyclerView_And_Adapter();
     }
 
 // CREATE RESOURCE MENU IN TOOLBAR _________________________________________________________________
@@ -111,7 +114,7 @@ public class MainActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddMeeting.class);
-                startActivityForResult(intent, ADD_MEETING_REQUEST_CODE);
+                startActivity(intent);
             }
         });
     }
@@ -137,7 +140,7 @@ public class MainActivity
     @Subscribe
     public void delete(EventDelete eventDelete) {
         apiService.delete_Meeting(eventDelete.meeting);
-        mRecyclerViewAdapter.notifyDataSetChanged();
+        reset_RecyclerView_And_Adapter();
     }
 
 // START EVENT _____________________________________________________________________________________
@@ -157,8 +160,7 @@ public class MainActivity
 // INITIALISE RECYCLERVIEW _________________________________________________________________________
     @Override
     public void onResume() {
-        apiService = get_Unique_Meeting_List();
-        mRecyclerView.setAdapter(mRecyclerViewAdapter);
+        reset_RecyclerView_And_Adapter();
         super.onResume();
     }
 

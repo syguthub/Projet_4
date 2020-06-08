@@ -77,7 +77,7 @@ public class FilterDialogAlert extends DialogFragment {
                             add_Zero_If_Number_Inferior_Ten(mDatePicker.getMonth() + 1) + "/" +
                             add_Zero_If_Number_Inferior_Ten(mDatePicker.getYear());
                 }else{
-                    mDate="null";
+                    mDate="";
                 }
                 interfaceAlertDialog.data_Callback_filter(mDate, mSelectRoom);
                 dismiss();

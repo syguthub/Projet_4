@@ -32,20 +32,20 @@ public class DummyApiService implements ApiService {
     public List<Meeting> get_Meeting_List_Filter(String date, String room) {
         List<Meeting> mByFilter = new ArrayList();
         for (int i = 0; i < mList.size(); i++) {
-            if (!date.equals("null") && !(room.equals("SELECT ROOM"))) {
+            if (!date.equals("") && !(room.equals("SELECT ROOM"))) {
                 if ((mList.get(i).getmDate().equals(date)) &&
                         mList.get(i).getmRoom().equals(room)) {
                     mByFilter.add(mList.get(i));
                 }
-            } else if (date.equals("null") && !(room.equals("SELECT ROOM")) ) {
+            } else if (date.equals("") && !(room.equals("SELECT ROOM")) ) {
                 if (mList.get(i).getmRoom().equals(room)) {
                     mByFilter.add(mList.get(i));
                 }
-            } else if (!date.equals("null") && room.equals("SELECT ROOM")) {
+            } else if (!date.equals("") && room.equals("SELECT ROOM")) {
                 if ((mList.get(i).getmDate().equals(date))) {
                     mByFilter.add(mList.get(i));
                 }
-            } else if (date.equals("null") && room.equals("SELECT ROOM")) {
+            } else if (date.equals("") && room.equals("SELECT ROOM")) {
                 mByFilter.add(mList.get(i));
             }
         }

@@ -23,6 +23,7 @@ import com.openclassrooms.mareu.control.SpinnerManagement;
 import com.openclassrooms.mareu.model.Meeting;
 import com.openclassrooms.mareu.services.ApiService;
 
+import static com.openclassrooms.mareu.services.SingleApiInstanceManagement.clear_Meeting_List;
 import static com.openclassrooms.mareu.services.SingleApiInstanceManagement.get_Unique_Meeting_List;
 import static com.openclassrooms.mareu.services.SingleApiInstanceManagement.new_Meeting_List;
 
@@ -45,11 +46,12 @@ public class AddMeeting extends AppCompatActivity {
 
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
+
         super.onConfigurationChanged(newConfig);
         if (orientation != newConfig.orientation) {
             setContentView(R.layout.activity_add_meeting);
             all_Configuration();
-            new_Meeting_List();
+            clear_Meeting_List();
         }
         orientation = newConfig.orientation;
     }

@@ -355,6 +355,7 @@ public class InstrumentedTest {
 // SELECTION FILTRE --------------------------------------------------------------------------------
         onView(Matchers.allOf(withId(R.id.main_activity), isDisplayed()));
         onView(Matchers.allOf(withId(R.id.menu_filtre), isDisplayed())).perform(click());
+
         onView(Matchers.allOf(withId(R.id.layout_filter), isDisplayed()));
 
         onView(Matchers.allOf(withId(R.id.textdate),isDisplayed())).perform(click());
