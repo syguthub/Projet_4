@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="name">15sp</dimen>
+    <dimen name="mail">15sp</dimen>
+    <dimen name="date_hour">15sp</dimen>
+    <dimen name="text_chip">10sp</dimen>
+    <dimen name="texte_bouton">15sp</dimen>
+    <dimen name="textealertdialog">20sp</dimen>
+    <dimen name="titleRecyclerView">12dp</dimen>
+    <dimen name="statRecyclerView">11dp</dimen>
+    <dimen name="paddingStart">11dp</dimen>
+    <dimen name="paddingEnd">11dp</dimen>
+    <dimen name="paddingVertical">10dp</dimen>
+    <dimen name="paddingHorizontalLayout">16dp</dimen>
+    <dimen name="paddingVerticalLayout">16dp</dimen>
+    <dimen name="layout_marginBottom">8dp</dimen>
+    <dimen name="minHeight">0</dimen>
+
+    <dimen name="paddingStartSpinner">11dp</dimen>
+    <dimen name="paddingTopSpinner">4dp</dimen>
+    <dimen name="paddingBottomSpinner">4dp</dimen>
+    <dimen name="marginBottomSpinner">3dp</dimen>
+    <dimen name="textSizeSpinner">13sp</dimen>
+
+    <dimen name="paddingSpinnerHead">6dp</dimen>
+    <dimen name="marginBottomSpinnerHead">4dp</dimen>
+    <dimen name="textSizeSpinnerhead">15sp</dimen>
+
+</resources>

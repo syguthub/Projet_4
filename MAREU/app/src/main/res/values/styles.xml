@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="titleTextColor">#FFFFFF</item>
+        <item name="actionMenuTextColor">#FFFFFF</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_close_black_24dp</item>
+    </style>
+
+    <style name="ToolbarCustum" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="background">@color/colorAccent</item>
+        <item name="titleTextColor">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="pupopCustum" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="overlapAnchor">false</item>
+        <item name="background">@color/colorAccent</item>
+        <item name="android:dropDownVerticalOffset">4dp</item>
+    </style>
+
+
+    <style name="style_spinner_head" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:paddingStart">@dimen/paddingStartSpinner</item>
+        <item name="android:layout_marginBottom">@dimen/marginBottomSpinnerHead</item>
+        <item name="android:textSize">@dimen/textSizeSpinnerhead</item>
+    </style>
+
+    <style name="style_spinner" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:paddingStart">@dimen/paddingStartSpinner</item>
+        <item name="android:paddingTop">@dimen/paddingTopSpinner</item>
+        <item name="android:paddingBottom">@dimen/paddingBottomSpinner</item>
+        <item name="android:layout_marginBottom">@dimen/marginBottomSpinner</item>
+        <item name="android:textSize">@dimen/textSizeSpinner</item>
+        <item name="android:background">@drawable/spinner_drop_down</item>
+        <item name="android:selectableItemBackground">@color/colorPrimary</item>
+    </style>
+
+</resources>

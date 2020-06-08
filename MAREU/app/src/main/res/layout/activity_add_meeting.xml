@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_meeting_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorOnSecondary"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/paddingHorizontalLayout"
+    android:paddingVertical="@dimen/paddingVerticalLayout"
+    tools:context=".view.AddMeeting">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="70">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80"
+            android:orientation="vertical"
+
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_meeting"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_name_meeting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:ems="1"
+                    android:hint="@string/name_meeting"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/paddingStart"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/idSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_marginBottom"
+                android:layout_weight="10"
+                android:background="#002196F3"
+                android:paddingVertical="@dimen/paddingStartSpinner"
+                android:spinnerMode="dropdown">
+            </Spinner>
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_marginBottom"
+                android:layout_weight="10"
+                android:paddingVertical="6dp"
+                android:background="@drawable/board_view"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_today_black_24dp"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:hint="@string/DDMMYYYY"
+                android:paddingHorizontal="@dimen/paddingStart"
+                android:textColor="#000000"
+                android:textSize="@dimen/date_hour" />
+
+            <TextView
+                android:id="@+id/hour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_marginBottom"
+                android:paddingVertical="@dimen/paddingVertical"
+                android:layout_weight="10"
+                android:background="@drawable/board_view"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_query_builder_black_24dp"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:hint="@string/HOUR"
+                android:paddingHorizontal="@dimen/paddingStart"
+                android:textColor="#000000"
+                android:textSize="@dimen/name" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/get_mail_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/get_mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:hint="@string/set_mail_participants"
+                    android:imeOptions="actionSend"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="@dimen/paddingStart"
+                    android:textSize="@dimen/mail">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <include layout="@layout/chip_groupe"></include>
+    </LinearLayout>
+
+</ScrollView>

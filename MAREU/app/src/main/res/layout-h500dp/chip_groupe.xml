@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="30"
+    android:paddingVertical="7dp"
+    android:background="@drawable/board_view"
+    android:scrollbars="vertical">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/list_participant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+        android:verticalScrollbarPosition="right">
+    </com.google.android.material.chip.ChipGroup>
+</ScrollView>

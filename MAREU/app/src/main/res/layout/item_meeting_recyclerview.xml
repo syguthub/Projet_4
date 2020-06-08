@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="77dp"
+    android:id="@+id/layout_item_recyclerview"
+    tools:context=".view.MainActivity">
+
+    <ImageView
+        android:id="@+id/couleur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_lens_black_24dp"
+        android:foregroundGravity="center"
+        android:layout_marginStart="15dp"
+        />
+<LinearLayout
+    android:id="@+id/linear_layout_text_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentBottom="true"
+    android:layout_toStartOf="@id/delete"
+    android:layout_toEndOf="@id/couleur"
+    android:layout_marginStart="15dp"
+    android:paddingEnd="10dp"
+    >
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="@dimen/titleRecyclerView"
+        android:textColor="#000"
+        android:gravity="bottom"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:ellipsize="none"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="@dimen/statRecyclerView"
+        android:gravity="top"
+        android:textColor="#000"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="maxime@lamzone.com, alex@lamzone.com" />
+</LinearLayout>
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="22dp"
+        android:src="@drawable/ic_delete_black_24dp"
+        android:foregroundGravity="center"
+        />
+</RelativeLayout>
