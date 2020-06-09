@@ -33,7 +33,7 @@ public class HourManagement {
         mHourEntry.setText(current_Time());
     }
 
-    Calendar calendar;
+    private Calendar calendar;
 
 // TIMEPICKERDIALOG CLICK CONFIGURATION ------------------------------------------------------------
     public void timer_Configuration() {

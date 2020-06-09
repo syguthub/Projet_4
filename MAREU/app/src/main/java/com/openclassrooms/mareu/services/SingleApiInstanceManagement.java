@@ -14,10 +14,5 @@ public class SingleApiInstanceManagement {
         apiService.get_Meeting_List().clear();
     }
 
-// GET A instance __________________________________________________________________________________
-    public static void new_Meeting_List() {
-        apiService = new DummyApiService();
-    }
-
 }
 

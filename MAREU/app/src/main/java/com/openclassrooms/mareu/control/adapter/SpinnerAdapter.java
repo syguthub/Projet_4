@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import com.openclassrooms.mareu.R;
 
 public class SpinnerAdapter extends ArrayAdapter {
-    boolean alertDialog;
+    private boolean alertDialog;
 // CONSTRUCTOR _____________________________________________________________________________________
     public SpinnerAdapter(@NonNull Activity activity, int resource, String[] listSalle,boolean alertDialog) {
         super(activity, resource, listSalle);

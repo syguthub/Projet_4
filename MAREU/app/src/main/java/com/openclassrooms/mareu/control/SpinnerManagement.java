@@ -71,9 +71,4 @@ public class SpinnerManagement {
         return mSelectSpinner;
     }
 
-// CLEAR SPINNER ___________________________________________________________________________________
-    public void clear_Spinner() {
-        mSpinnerRoom.setSelection(0);
-    }
-
 }

@@ -44,34 +44,6 @@ public class MainActivity
     private RecyclerViewAdapter mRecyclerViewAdapter;
     private ApiService mApiService;
 
-// CLEAR IF ORIENTATION CHANGES ____________________________________________________________________
-    private int orientation=0;
-    private ApiService beforeApiService =apiService;
-
-//    @Override
-//    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);
-//        if (orientation != newConfig.orientation) {
-////IF THE API CHANGES, THERE IS A ROTATION IN ADD MEETING, SO A NEW INSTANCE THE API HAS BEEN CREATED
-//// RESET THE RECYCLER.
-//// ELSE DELETE THE API LIST
-//            if(beforeApiService != apiService){
-//                beforeApiService =apiService;
-//                reset_RecyclerView_And_Adapter();
-//            }else {
-//                clear_Meeting_List();
-//                reset_RecyclerView_And_Adapter();
-//            }
-//            orientation = newConfig.orientation;
-//        }
-//    }
-
-// RESET RECYCLERVIEW ______________________________________________________________________________
-    private void reset_RecyclerView_And_Adapter(){
-        mApiService = get_Unique_Meeting_List();
-        mRecyclerViewAdapter = new RecyclerViewAdapter(mApiService.get_Meeting_List());
-        mRecyclerView.setAdapter(mRecyclerViewAdapter);
-    }
 
 // CONSTRUCTOR _____________________________________________________________________________________
     @Override
@@ -126,6 +98,13 @@ public class MainActivity
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mApiService = get_Unique_Meeting_List();
         mRecyclerViewAdapter = new RecyclerViewAdapter(mApiService.get_Meeting_List());
+    }
+
+// RESET RECYCLERVIEW ______________________________________________________________________________
+    private void reset_RecyclerView_And_Adapter(){
+        mApiService = get_Unique_Meeting_List();
+        mRecyclerViewAdapter = new RecyclerViewAdapter(mApiService.get_Meeting_List());
+        mRecyclerView.setAdapter(mRecyclerViewAdapter);
     }
 
 // GET DATA IN PARAMETER INTERFACE CALLBACK FOR INITIALISE RECYCLERVIEW ____________________________

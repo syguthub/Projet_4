@@ -49,10 +49,11 @@ public class UtilM {
         return drawableError;
     }
 
-    // GET ERROR DRAWABLE ______________________________________________________________________________
+// GET ERROR DRAWABLE ______________________________________________________________________________
     public static Drawable set_drawableBoardView_Drawable(Activity activity) {
         Drawable drawableBoardView;
         drawableBoardView = DrawableCompat.wrap(activity.getResources().getDrawable(R.drawable.board_view));
         return drawableBoardView;
     }
+
 }

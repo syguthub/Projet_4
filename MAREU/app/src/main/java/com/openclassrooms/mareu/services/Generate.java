@@ -20,7 +20,11 @@ public class Generate {
                 Color.MAGENTA,
                 Color.RED,
                 Color.GREEN,
-                Color.BLUE
+                Color.BLUE,
+                Color.CYAN,
+                Color.YELLOW,
+                Color.GRAY,
+                Color.LTGRAY
         );
         Random random = new Random();
         return colorList.get(random.nextInt(colorList.size()));

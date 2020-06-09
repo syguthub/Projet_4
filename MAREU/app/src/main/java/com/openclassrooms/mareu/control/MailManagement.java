@@ -35,6 +35,7 @@ public class MailManagement {
 // CONSTRUCTOR _____________________________________________________________________________________
     public MailManagement(Activity activity) {
         this.activity = activity;
+
 // VIEW CONFIGURATION ------------------------------------------------------------------------------
         scrollView = activity.findViewById(R.id.scrollview);
         mListChipGroup = activity.findViewById(R.id.list_participant);
@@ -45,35 +46,56 @@ public class MailManagement {
         mEntryMeetingParticipants.setEndIconDrawable(R.drawable.ic_details_black_24dp);
     }
 
-// ADD MAIL BUTTON LISTENER ________________________________________________________________________
-    public void add_Mail_Button_Listener() {
-// ADD MAIL WITCH KEYBOARD ------------------------------------------------------------------------
-        mEntryMeetingParticipants.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+// END ICON MANAGEMENT _____________________________________________________________________________
+    public void visibility_Of_The_Icon_After_Error() {
+        mEntryMeetingParticipants.getEditText().addTextChangedListener(new TextWatcher() {
+
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == IME_ACTION_SEND) {
-                    validate_the_Format_of_the_Email();
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
-// ADD MAIL WITCH END ICON -------------------------------------------------------------------------
-        mEntryMeetingParticipants.setEndIconOnClickListener(new View.OnClickListener() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
             @Override
-            public void onClick(View v) {
-                validate_the_Format_of_the_Email();
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mEntryMeetingParticipants.setEndIconVisible(true);
             }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
         });
     }
 
-// VALIDATE FORMAT MAIL OF THE EMAIL _______________________________________________________________
+// ADD MAIL BUTTON LISTENER ________________________________________________________________________
+    public void add_Mail_Button_Listener() {
+
+// ADD MAIL WITCH KEYBOARD ------------------------------------------------------------------------
+    mEntryMeetingParticipants.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            if (actionId == IME_ACTION_SEND) {
+                validate_the_Format_of_the_Email();
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });
+
+// ADD MAIL WITCH END ICON -------------------------------------------------------------------------
+    mEntryMeetingParticipants.setEndIconOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            validate_the_Format_of_the_Email();
+        }
+    });
+}
+
+// VALIDATE FORMAT MAIL OF THE EMAIL AND CREATE CHIP _______________________________________________
     private void validate_the_Format_of_the_Email() {
+
 // GET CHAR SEQUENCE IN EDIT TEXT ------------------------------------------------------------------
         String[] tags = Objects.requireNonNull(mEntryMeetingParticipants.getEditText()).getText().toString().split(" ");
+
 // IF THE EMAIL FORMAT IS VALID AND ENTRY ONLY ONE IS ENTERED, CREATE CHIP ELSE SET ERROR ----------
-        if (Patterns.EMAIL_ADDRESS.matcher(tags[0]).matches()) {
+        if (Patterns.EMAIL_ADDRESS.matcher(tags[0]).matches() && (tags.length == 1)) {
             create_View_Chip(tags[0]);
             scrollView.setBackground(set_drawableBoardView_Drawable(activity));
         } else {
@@ -89,17 +111,23 @@ public class MailManagement {
 
 // CREATE CHIP _____________________________________________________________________________________
     private void create_View_Chip(String tag) {
+
 // CREATE CHIP VIEW --------------------------------------------------------------------------------
         LayoutInflater inflater = LayoutInflater.from(activity);
         final Chip chip = (Chip) inflater.inflate(R.layout.chip_item, null, false);
+
 // CHIP TEXT CONFIGURATION -------------------------------------------------------------------------
         chip.setText(tag);
+
 // REMOVE CHIP CONFIGURATION -----------------------------------------------------------------------
         remove_Chip(chip);
+
 // ADD CHIP IN CHIP GROUP --------------------------------------------------------------------------
         mListChipGroup.addView(chip);
+
 //CLEAR EDIT TEXT ----------------------------------------------------------------------------------
         mEntryMeetingParticipants.getEditText().setText("");
+
     }
 
 // LISTENER REMOVE CHIP ____________________________________________________________________________
@@ -125,25 +153,6 @@ public class MailManagement {
             }
         }
         return listParticipant;
-    }
-
-// END ICON MANAGEMENT _____________________________________________________________________________
-    public void visibility_Of_The_Icon_After_Error() {
-        mEntryMeetingParticipants.getEditText().addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mEntryMeetingParticipants.setEndIconVisible(true);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
     }
 
 // SET ERROR IF CHIP GROUP IS EMPTY_________________________________________________________________

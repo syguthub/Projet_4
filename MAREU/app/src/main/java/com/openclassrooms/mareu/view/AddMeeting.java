@@ -25,7 +25,6 @@ import com.openclassrooms.mareu.services.ApiService;
 
 import static com.openclassrooms.mareu.services.SingleApiInstanceManagement.clear_Meeting_List;
 import static com.openclassrooms.mareu.services.SingleApiInstanceManagement.get_Unique_Meeting_List;
-import static com.openclassrooms.mareu.services.SingleApiInstanceManagement.new_Meeting_List;
 
 /*
 ACTIVITY ADD MEETING
@@ -56,6 +55,14 @@ public class AddMeeting extends AppCompatActivity {
         orientation = newConfig.orientation;
     }
 
+// CONSTRUCTOR _____________________________________________________________________________________
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_meeting);
+        all_Configuration();
+    }
+
 // HIDE KEYBOARD ___________________________________________________________________________________
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -74,13 +81,12 @@ public class AddMeeting extends AppCompatActivity {
         }
         return super.dispatchTouchEvent(ev);
     }
-    
-// CONSTRUCTOR _____________________________________________________________________________________
+
+// CREATE RESOURCE MENU IN TOOLBAR _________________________________________________________________
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_meeting);
-        all_Configuration();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add_meeting, menu);
+        return true;
     }
 
 // ALL CONFIGURATION _______________________________________________________________________________
@@ -92,14 +98,7 @@ public class AddMeeting extends AppCompatActivity {
         configuration_Of_mail_Selection();
     }
 
-// CREATE RESOURCE MENU IN TOOLBAR _________________________________________________________________
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_meeting, menu);
-        return true;
-    }
-
-// VIEW CONFIGURATION ______________________________________________________________________________
+    // VIEW CONFIGURATION ______________________________________________________________________________
     private void name_Meeting_Configuration() {
         mNameMeeting = findViewById(R.id.name_meeting);
     }
@@ -143,15 +142,10 @@ public class AddMeeting extends AppCompatActivity {
             name = false;
         }
 
-        if (name && participants && room) {
-            return true;
-        } else {
-            return false;
-        }
+        return name && participants && room;
     }
 
 // VALID AND ADD MEETING ___________________________________________________________________________
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_valide) {

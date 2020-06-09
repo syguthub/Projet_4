@@ -226,7 +226,7 @@ public class InstrumentedTest {
         onView(Matchers.allOf(withId(R.id.menu_valide), isDisplayed())).perform(click());
         onView(Matchers.allOf(withId(R.id.main_activity), isDisplayed()));
 // COUNT ITEM  MEETING -----------------------------------------------------------------------------
-        onView(Matchers.allOf(withId(R.id.liste_recycler_view), childAtPosition(withId(R.id.main_activity), 0), isDisplayed())).check(withItemCount(2));
+        onView(Matchers.allOf(withId(R.id.liste_recycler_view), childAtPosition(withId(R.id.main_activity), 0), isDisplayed())).check(withItemCount(1));
     }
 
     @Test
@@ -254,13 +254,13 @@ public class InstrumentedTest {
         onView(Matchers.allOf(withId(R.id.main_activity), isDisplayed()));
 
 // DELETE MEETING ----------------------------------------------------------------------------------
-        onView(Matchers.allOf(withId(R.id.liste_recycler_view), isDisplayed())).check(withItemCount(3));
+        onView(Matchers.allOf(withId(R.id.liste_recycler_view), isDisplayed())).check(withItemCount(1));
 
         onView(allOf(withId(R.id.liste_recycler_view), isDisplayed()))
                 .perform(closeSoftKeyboard())
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, new DeleteViewAction()));
 
-        onView(Matchers.allOf(withId(R.id.liste_recycler_view), isDisplayed())).check(withItemCount(2));
+        onView(Matchers.allOf(withId(R.id.liste_recycler_view), isDisplayed())).check(withItemCount(0));
     }
 
     @Test
@@ -292,7 +292,7 @@ public class InstrumentedTest {
 // STAT ITEM MEETING -------------------------------------------------------------------------------
         onView(Matchers.allOf(withId(R.id.liste_recycler_view), isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()))
-                .check(matches(hasDescendant(withText("Réunion B - " + "05h28" + " - dfhj"))));
+                .check(matches(hasDescendant(withText("Réunion D - " + "05h28" + " - dfhj"))));
 
         onView(Matchers.allOf(withId(R.id.liste_recycler_view), isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()))
@@ -378,7 +378,6 @@ public class InstrumentedTest {
     }
 
 
-    //genere par record espresso test
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
 

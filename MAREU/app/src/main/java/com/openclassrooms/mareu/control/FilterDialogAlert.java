@@ -68,6 +68,27 @@ public class FilterDialogAlert extends DialogFragment {
 // SPINNER CONFIGURATION ---------------------------------------------------------------------------
         mSpinnerFilter = view.findViewById(R.id.spinner_fiter);
         mSpinnerFilter.setAdapter(new SpinnerAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, get_List_Spinner(),true));
+
+// LISTEN TO THE CLICK ON THE SPINNER TO SAVE SELECTION -----------------------------------------------
+        mSpinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mSelectRoom = parent.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
+
+// LISTEN TO THE CLICK ON THE TEXT VIEW WITCH CHANGE WITH DATEPICKER ---------------------------------
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatePicker.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.INVISIBLE);
+            }
+        });
+
 // LISTENER ON THE VALIDATE BUTTON AND SEND DATA WITH THE INTERFACE AND STOP THE DIALOG ALERT ------
         mValidatedFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,32 +105,11 @@ public class FilterDialogAlert extends DialogFragment {
             }
         });
 
-// LISTEN TO THE CLICK ON THE TEXT VIEW WITCH CHANGE WITH DATEPICKER ---------------------------------
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDatePicker.setVisibility(View.VISIBLE);
-                textView.setVisibility(View.INVISIBLE);
-            }
-        });
-
 // LISTEN TO THE CLICK ON THE CANCEL BUTTON TO CLEAR THE FILTER ------------------------------------
         mCancelFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clear_The_Filter();
-            }
-        });
-
-// LISTEN TO THE CLICK ON THE SPINNER TO SAVE SELECTION -----------------------------------------------
-        mSpinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mSelectRoom = parent.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 

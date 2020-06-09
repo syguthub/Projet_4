@@ -73,7 +73,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private ImageView mDelete;
         private ImageView mColor;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             mTitle = view.findViewById(R.id.title);
             mMeetingParticipants = view.findViewById(R.id.state);
